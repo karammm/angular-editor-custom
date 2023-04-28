@@ -1,14 +1,6 @@
 import { i18nFormatPlaceholderNames } from '@angular/compiler/src/render3/view/i18n/util';
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
-import {
-  AngularEditorConfig,
-} from '@kolkov/angular-editor';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'my-app',
@@ -16,6 +8,7 @@ import {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  @ViewChild('editor') editor: ElementRef;
   htmlContent: string = '';
   showToolbar: boolean = false;
   name = 'Angular 6';
@@ -50,17 +43,10 @@ export class AppComponent implements OnInit {
     ],
   };
 
-  ngOnInit(): void {
-
-  }
-
-  @ViewChild('editor') editor: ElementRef;
-  constructor(private renderer: Renderer2) {}
-
-  
+  ngOnInit(): void {}
   onKeyUp() {
     this.config.showToolbar = true;
-    if(this.htmlContent === ''){
+    if (this.htmlContent === '') {
       this.config.showToolbar = false;
     }
   }
