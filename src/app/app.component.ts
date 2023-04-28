@@ -8,46 +8,14 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  @ViewChild('editor') editor: ElementRef;
-  htmlContent: string = '';
+  htmlContent: string ;
   showToolbar: boolean = false;
-  name = 'Angular 6';
-  isditorVisible: boolean = false;
-  config: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    showToolbar: false,
-    height: '15rem',
-    minHeight: '5rem',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-    toolbarHiddenButtons: [
-      ['bold', 'insertImage', 'insertVideo', 'link', 'unlink'],
-    ],
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText',
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ],
-  };
 
-  ngOnInit(): void {}
-  onKeyUp() {
-    this.config.showToolbar = true;
-    if (this.htmlContent === '') {
-      this.config.showToolbar = false;
-    }
+  onContentChanged(event: any) {
+     this.htmlContent = event;
+  }
+
+  ngOnInit(): void {
+    this.htmlContent="check";
   }
 }

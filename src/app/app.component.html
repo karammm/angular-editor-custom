@@ -1,6 +1,8 @@
 <div class="container">
-    <angular-editor [(ngModel)]="htmlContent" [config]="config" #editor (keyup)="onKeyUp()">
-    </angular-editor>
+    <app-editor
+        [htmlContent]="htmlContent"
+        [showToolbar]="showToolbar"
+        (contentChanged)="onContentChanged($event)"></app-editor>
   <h5 class="html-header">HTML Output</h5>
   <div class="html">
     {{ htmlContent }}
